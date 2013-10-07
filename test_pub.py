@@ -65,33 +65,29 @@ class TestGlass(object):
         with pytest.raises(NoContentException):
             pint_glass.drink()
 
-    def test_customer_quaffs_from_full_has_16oz(cls, pint_glass):
+    def test_customer_quaffs_from_full_pint_has_16oz(cls, pint_glass):
         pint_glass.quaff()
         assert pint_glass.content == 16
 
-    def test_0oz_glass_is_empty(cls, pint_glass):
-        pint_glass.content = 0
-        assert pint_glass.is_empty()
+    def test_0oz_glass_is_empty(cls, glass):
+        glass.content = 0
+        assert glass.is_empty()
 
-    def test_quaff_from_3oz_glass_empties_glass(cls, pint_glass):
-        pint_glass.content = 3
-        pint_glass.quaff()
-        assert pint_glass.is_empty()
+    def test_quaff_from_3oz_glass_empties_glass(cls, glass):
+        glass.content = 3
+        glass.quaff()
+        assert glass.is_empty()
 
-    def test_downed_glass_is_empty(cls, pint_glass):
-        pint_glass.down()
-        assert pint_glass.is_empty()
+    def test_downed_glass_is_empty(cls, glass):
+        glass.down()
+        assert glass.is_empty()
 
-    def test_downed_empty_glass_returns_no_content_exception(cls, pint_glass):
-        pint_glass.content = 0
+    def test_downed_empty_glass_returns_no_content_exception(cls, glass):
+        glass.content = 0
         with pytest.raises(NoContentException):
-            pint_glass.down()
+            glass.down()
 
-    def test_quaff_empty_glass_returns_no_content_exception(cls, pint_glass):
-        pint_glass.content = 0
+    def test_quaff_empty_glass_returns_no_content_exception(cls, glass):
+        glass.content = 0
         with pytest.raises(NoContentException):
-            pint_glass.quaff()
-
-    #def test_drink_from_pitcher_raises_dont_be_greedy_exception(cls, pitcher):
-        #with pytest.raises(DontBeGreedyException):
-            #pitcher.drink()
+            glass.quaff()
