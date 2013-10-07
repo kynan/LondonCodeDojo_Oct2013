@@ -1,5 +1,6 @@
 import pytest
 
+from pub import PINT, HALF_PINT, PITCHER
 from pub import PintGlass, HalfPintGlass, Pitcher, NoContentException
 
 
@@ -28,13 +29,13 @@ def glass(pint_glass, half_pint_glass, pitcher, request):
 class TestGlass(object):
 
     def test_fresh_pint_glass_is_1_pint(cls, pint_glass):
-        assert pint_glass.content == 20
+        assert pint_glass.content == PINT
 
     def test_fresh_half_pint_glass_is_half_pint(cls, half_pint_glass):
-        assert half_pint_glass.content == 10
+        assert half_pint_glass.content == HALF_PINT
 
     def test_fresh_pitcher_is_3_pints(cls, pitcher):
-        assert pitcher.content == 60
+        assert pitcher.content == PITCHER
 
     def test_fresh_glass_is_has_maximum_content(cls, glass):
         assert glass.content == glass._max

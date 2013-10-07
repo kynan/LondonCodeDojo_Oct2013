@@ -1,3 +1,7 @@
+PINT = 20
+HALF_PINT = PINT/2
+PITCHER = 3*PINT
+
 class NoContentException(Exception):
     pass
 
@@ -46,12 +50,12 @@ class Glass(object):
 
 
 class PintGlass(Glass):
-    _max = 20
+    _max = PINT
 
 
 class HalfPintGlass(Glass):
-    _max = 10
+    _max = HALF_PINT
 
 
 class Pitcher(Glass):
-    _max = 60
+    _max = PITCHER
